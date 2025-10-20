@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Simulação de infraestrutura automatizada com EC2 e S3
+
+Parameters:
+  KeyName:
+    Type: String
+    Description: Nome da chave SSH para acesso à instância
+
+Resources:
+  MeuBucketS3:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: bucket-nathalia-cloudformation
+
+  GrupoDeSeguranca:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Permitir acesso SSH
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+
+  MinhaInstanciaEC2:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      KeyName: !Ref KeyName
+      ImageId: ami-0c55b159cbfafe1f0
+      SecurityGroups:
+        - !Ref GrupoDeSeguranca
