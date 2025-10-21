@@ -24,6 +24,7 @@ Infraestrutura como Código (IaC) é uma abordagem que permite definir e gerenci
 
 ## 📁 Diagrama de Infraestrutura
 
+
 ![Diagrama de infraestrutura](diagramadeinfraestrutura.png)
 
 O diagrama acima representa a estrutura simulada no template. Ele mostra:
